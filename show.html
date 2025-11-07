@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BookMyShow — CSS/HTML Clone</title>
+  <style>
+    /* Reset & basics */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#0f1724;color:#e6eef8}
+    a{text-decoration:none;color:inherit}
+
+    /* Header */
+    .topbar{background:#0b1220;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,#ff3d00,#ffb300);display:flex;align-items:center;justify-content:center;font-weight:700;color:#08101b}
+    .nav{display:flex;gap:18px;align-items:center}
+    .nav a{font-size:14px;color:#9fb0c8}
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{background:#ff3d00;color:white;padding:8px 12px;border-radius:6px;font-weight:600}
+    .ghost{border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:6px;color:#a9c0d6}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;padding:36px 28px;align-items:center}
+    .hero-left h1{font-size:34px;line-height:1.02;margin-bottom:10px}
+    .hero-left p{color:#9fb0c8;margin-bottom:18px}
+    .search{display:flex;gap:10px}
+    .search input{flex:1;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:#071224;color:#cfe6ff}
+    .search .go{background:#ff3d00;color:#07101a;padding:12px 16px;border-radius:8px;font-weight:700}
+
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .venue{display:flex;align-items:center;gap:12px}
+    .city{font-weight:700}
+
+    /* Filters */
+    .filters{display:flex;gap:10px;padding:12px 28px;border-bottom:1px solid rgba(255,255,255,0.02);flex-wrap:wrap}
+    .chip{background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px;color:#c9e3ff;font-weight:600;font-size:13px}
+
+    /* Movies grid */
+    .movies{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:28px}
+    .movie{background:#071526;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.02)}
+    .poster{height:260px;background-size:cover;background-position:center}
+    .m-body{padding:12px}
+    .m-title{font-weight:700;margin-bottom:6px}
+    .m-sub{color:#9fb0c8;font-size:13px;margin-bottom:10px}
+    .m-footer{display:flex;justify-content:space-between;align-items:center}
+    .rating{background:#08182b;padding:6px 8px;border-radius:6px;font-weight:700}
+    .book{background:#00b894;color:#031017;padding:8px 12px;border-radius:8px;font-weight:700}
+
+    /* Responsive */
+    @media (max-width:1100px){.movies{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr 300px}}
+    @media (max-width:860px){.movies{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.topbar{padding:12px}}
+    @media (max-width:520px){.movies{grid-template-columns:1fr}.nav{display:none}.hero-left h1{font-size:26px}}
+
+    /* small helpers */
+    .badge{display:inline-block;background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:6px;font-weight:700}
+    footer{padding:28px;background:#06101a;margin-top:24px;border-top:1px solid rgba(255,255,255,0.02)}
+
+    /* subtle hover */
+    .movie:hover{transform:translateY(-6px);transition:all .18s ease}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">B</div>
+      <div>
+        <div style="font-weight:800">BookMyShow Clone</div>
+        <div style="font-size:12px;color:#94b7d0">Movies · Events · Plays</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#">Movies</a>
+      <a href="#">Stream</a>
+      <a href="#">Events</a>
+      <a href="#">Plays</a>
+      <a href="#">Sports</a>
+    </nav>
+
+    <div class="actions">
+      <div class="ghost">Bangalore</div>
+      <a class="btn" href="#">Sign in</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Book movie tickets, plays and events near you.</h1>
+      <p>Find the latest shows, best prices and top-rated cinemas — all in one place.</p>
+
+      <div class="search">
+        <input placeholder="Search for movie, play or venue" />
+        <button class="go">Search</button>
+      </div>
+
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <div class="chip">Now Showing</div>
+        <div class="chip">Coming Soon</div>
+        <div class="chip">IMAX</div>
+        <div class="chip">4DX</div>
+      </div>
+    </div>
+
+    <aside class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div>
+          <div class="venue"> 
+            <div class="logo" style="width:36px;height:36px;border-radius:6px;font-size:14px">C</div>
+            <div>
+              <div class="city">Bengaluru</div>
+              <div style="font-size:12px;color:#9fb0c8">Today · 52 shows</div>
+            </div>
+          </div>
+        </div>
+        <div class="badge">Offers</div>
+      </div>
+
+      <div style="display:flex;gap:10px;flex-direction:column">
+        <div style="font-size:13px;color:#9fb0c8">Top Cinemas</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+          <div style="display:flex;justify-content:space-between"><div>INOX Koramangala</div><div style="font-size:12px;color:#8fb0c8">12 shows</div></div>
+          <div style="display:flex;justify-content:space-between"><div>PVR Phoenix</div><div style="font-size:12px;color:#8fb0c8">9 shows</div></div>
+          <div style="display:flex;justify-content:space-between"><div>BIG Cinemas</div><div style="font-size:12px;color:#8fb0c8">7 shows</div></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <div class="filters">
+    <div class="chip">All</div>
+    <div class="chip">English</div>
+    <div class="chip">Hindi</div>
+    <div class="chip">Kannada</div>
+    <div class="chip">Animation</div>
+    <div class="chip">Action</div>
+    <div class="chip">Family</div>
+  </div>
+
+  <main class="movies" role="main">
+    <!-- Movie 1 -->
+    <article class="movie">
+      <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1517604931442-7d6c7f1b0c9e?auto=format&q=60&w=1200&fit=crop');"></div>
+      <div class="m-body">
+        <div class="m-title">Skyward Chase</div>
+        <div class="m-sub">Action · 2h 16m · English</div>
+        <div class="m-footer">
+          <div class="rating">8.3 ★</div>
+          <div class="book">Book</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Movie 2 -->
+    <article class="movie">
+      <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&q=60&w=1200&fit=crop');"></div>
+      <div class="m-body">
+        <div class="m-title">Romance in Paris</div>
+        <div class="m-sub">Romance · 1h 52m · English</div>
+        <div class="m-footer">
+          <div class="rating">7.6 ★</div>
+          <div class="book">Book</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Movie 3 -->
+    <article class="movie">
+      <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1502139214989-1c4c2d5d6de2?auto=format&q=60&w=1200&fit=crop');"></div>
+      <div class="m-body">
+        <div class="m-title">Haunted Hills</div>
+        <div class="m-sub">Horror · 1h 48m · Hindi</div>
+        <div class="m-footer">
+          <div class="rating">6.9 ★</div>
+          <div class="book">Book</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Movie 4 -->
+    <article class="movie">
+      <div class="poster" style="background-image:url('https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&q=60&w=1200&fit=crop');"></div>
+      <div class="m-body">
+        <div class="m-title">Animated Dreams</div>
+        <div class="m-sub">Animation · 1h 40m · Hindi</div>
+        <div class="m-footer">
+          <div class="rating">8.9 ★</div>
+          <div class="book">Book</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Add more movies by copy-pasting the article block -->
+  </main>
+
+  <footer>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px">
+      <div>
+        <div style="font-weight:800;margin-bottom:6px">BookMyShow Clone</div>
+        <div style="color:#9fb0c8;font-size:13px;max-width:380px">This is a simple HTML/CSS clone made for learning and prototyping. Replace posters and text with your own content or wire it up with a backend.</div>
+      </div>
+
+      <div style="display:flex;gap:16px;align-items:center">
+        <div class="chip">About</div>
+        <div class="chip">Contact</div>
+        <div class="chip">Careers</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
